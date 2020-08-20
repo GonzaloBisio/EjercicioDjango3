@@ -48,7 +48,7 @@ class Alumno(Persona):
     matricula = models.IntegerField()
 
 class Profesor(Persona):
-    numEmpleado = models.IntegerField()
+    número_empleado = models.IntegerField()
 
 class Prestamo(models.Model):
     codigo = models.CharField(max_length = 30)
