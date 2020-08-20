@@ -1,10 +1,14 @@
 from django.contrib import admin
 from .models import *
-# Register your models here.
 
+    # Register your models here.
 
 class PrestamoInLine(admin.TabularInline): 
     model = Prestamo
+
+class PrestamoAdmin(admin.ModelAdmin):
+    list_display = ('fechaSalida','fechaRegreso','persona', 'material',)
+    list_filter = ('persona','material','fechaSalida','fechaRegreso',)
 
 class AlumnoAdmin(admin.ModelAdmin):
     inlines = [PrestamoInLine, ]
@@ -73,11 +77,6 @@ class RevistaAdmin(admin.ModelAdmin):
             'fields': ('status',)
         }),
     )
-
-class PrestamoAdmin(admin.ModelAdmin):
-    list_display = ('fechaSalida','fechaRegreso','persona', 'material',)
-    list_filter = ('persona','material','fechaSalida','fechaRegreso',)
-
 
 admin.site.register(Editorial)
 admin.site.register(Libro,LibroAdmin)
